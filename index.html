@@ -7,13 +7,62 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
+
+<style>
+    .mobile-dropdown-content {
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .mobile-dropdown-btn svg {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #sideMenu {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .menu-backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .stats-container {
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+    }
+    .group:hover span.opacity-20 {
+        transform: scale(2.5);
+        transition: transform 0.3s ease;
+    }
+    
+    span.opacity-20 {
+        transition: transform 0.3s ease;
+    }
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 24px !important;
+        font-weight: bold;
+    }
+
+    .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: #000;
+        opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+        background: #000;
+    }
+
+    .swiper-slide {
+        height: auto;
+    }
+</style>
 <body class="font-sans">
 
-<!-- Main Navigation -->
+    
 <nav class="sticky top-0 z-50" style="background-color: rgb(253,242,237)">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center h-20">
-            <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="/" class="flex items-center">
                     <div class="flex items-center space-x-2">
@@ -27,9 +76,7 @@
                 </a>
             </div>
 
-            <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center space-x-8">
-                <!-- Home Dropdown -->
                 <div class="relative group">
                     <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 font-medium text-lg">
                         <span>Home</span>
@@ -43,7 +90,6 @@
                     </div>
                 </div>
 
-                <!-- Pages Dropdown -->
                 <div class="relative group">
                     <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 font-medium text-lg">
                         <span>Pages</span>
@@ -58,7 +104,6 @@
                     </div>
                 </div>
 
-                <!-- Service Dropdown -->
                 <div class="relative group">
                     <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 font-medium text-lg">
                         <span>Service</span>
@@ -76,20 +121,14 @@
                 <a href="/contact" class="text-gray-700 hover:text-blue-600 font-medium text-lg">Contact</a>
             </div>
 
-            <!-- CTA Button and Hamburger -->
             <div class="flex items-center space-x-4">
-                <!-- GET IN TOUCH Button -->
                 <a href="#" class="hidden lg:inline-flex relative items-center px-8 py-3 bg-white text-black font-medium rounded-full group overflow-hidden">
                     <span class="relative z-10">GET IN TOUCH</span>
-                    <!-- Orange accent circle -->
                     <span class="absolute left-2 bottom-1 w-6 h-6 bg-orange-400 rounded-full opacity-20"></span>
-                    <!-- Border -->
-                    <span class="absolute inset-0 border-2 border-black rounded-full"></span>
+                    <span class="absolute  border-2 border-black rounded-full"></span>
                 </a>
 
-                <!-- Hamburger Menu Button -->
                 <button type="button" id="menuButton" class="relative inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-black lg:hidden">
-                    <!-- Orange accent circle -->
                     <span class="absolute right-1 bottom-1 w-4 h-4 bg-orange-400 rounded-full opacity-20"></span>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -97,10 +136,8 @@
                 </button>
             </div>
 
-            <!-- Right Side Menu Icon -->
             <div class="fixed right-4 top-4 z-50">
                 <button type="button" id="sideMenuButton" class="relative inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-black hover:bg-black hover:text-white transition-all duration-300">
-                    <!-- Orange accent circle -->
                     <span class="absolute right-1 bottom-1 w-4 h-4 bg-orange-400 rounded-full opacity-20"></span>
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -108,17 +145,14 @@
                 </button>
             </div>
 
-            <!-- Side Menu Panel -->
             <div id="sideMenu" class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-40">
                 <div class="p-6">
-                    <!-- Close Button -->
                     <button id="closeSideMenu" class="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
 
-                    <!-- Side Menu Content -->
                     <div class="mt-8 space-y-6">
                         <h3 class="text-xl font-bold mb-4">Menu</h3>
                         <a href="#" class="block py-2 text-gray-600 hover:text-black">Home</a>
@@ -134,23 +168,18 @@
     </div>
 </nav>
 
-<!-- Mobile Menu Button and Navigation -->
 
-
-<!-- Mobile Navigation Menu -->
-<section class=" px-4 py-12 md:py-20 relative overflow-hidden bg-[rgb(253,242,237)] px-[10%]">
-  <!-- Background Shapes -->
+<section class="  py-12 md:py-20 relative overflow-hidden bg-[rgb(253,242,237)] px-[10%]">
   <img src="https://hwp.creativegigstf.com/seom/assets/img/shape/shape-1.png" alt="" class="absolute top-10 left-10 w-24 opacity-20 animate-pulse">
   <img src="https://hwp.creativegigstf.com/seom/assets/img/shape/shape-2.png" alt="" class="absolute bottom-10 right-10 w-32 opacity-20 animate-pulse">
   
   <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
-    <!-- Left Content -->
     <div class="w-full lg:w-1/2 space-y-8">
       <div class="relative">
         <img src="https://hwp.creativegigstf.com/seom/assets/img/shape/title-shape.png" 
              alt="" 
              class="absolute -top-8 -left-8 w-12 md:w-16">
-        <h1 class="text-5xl md:text-[95px] font-extrabold leading-[110px]">
+        <h1 class="text-5xl md:text-[95px]">
           Grow your<br>
           Brand with SEO<br>
           <span class="inline-block mt-2">
@@ -180,34 +209,26 @@
       </div>
     </div>
 
-    <!-- Right Content -->
     <div class="w-full lg:w-1/2 relative">
-      <!-- Decorative Arrow -->
       <img src="https://hwp.creativegigstf.com/seom/assets/img/shape/arrow-shape.png" 
            alt="" 
            class="absolute left-0 bottom-20 w-32 md:w-48 -translate-x-1/2 hidden md:block">
       
-      <!-- Main Image Container -->
       <div class="relative">
-        <!-- Purple Background -->
         <div class="rounded-[2.5rem] p-6 relative">
           <img src="https://hwp.creativegigstf.com/seom/assets/img/hero/hero-img-1.png" 
                alt="SEO Specialist" 
                class="rounded-2xl w-full object-cover">
           
-          <!-- Sticker Image -->
          
         </div>
 
-        <!-- Megaphone Shape -->
         <img src="https://hwp.creativegigstf.com/seom/assets/img/shape/hero-shape-1.png" 
              alt="" 
-             class="absolute -top-6 -right-6 w-20 md:w-24 animate-bounce">
+             class="absolute -top-6 -right-6 w-20 md:w-24">
 
-        <!-- SEO Marketing Badge -->
         
 
-        <!-- Circle Badge -->
         <div class="absolute bottom-5 right-5 w-32 h-32 md:w-60 md:h-60">
           <img src="https://hwp.creativegigstf.com/seom/assets/img/hero/sticker-1.png" 
                alt="" 
@@ -217,38 +238,31 @@
     </div>
   </div>
 
-  <!-- Stats Section -->
   
 </section>
 
-<!-- Add this JavaScript for mobile menu functionality -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const menuButton = document.getElementById('menuButton');
         const mobileMenu = document.getElementById('mobileMenu');
         const dropdownButtons = document.querySelectorAll('.mobile-dropdown-btn');
 
-        // Toggle mobile menu
         menuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Handle dropdown toggles
         dropdownButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const content = button.nextElementSibling;
                 const arrow = button.querySelector('svg');
                 
-                // Toggle dropdown content
                 content.classList.toggle('hidden');
                 
-                // Rotate arrow
                 arrow.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
             });
         });
     });
 
-    // Side Menu Functionality
     document.addEventListener('DOMContentLoaded', function() {
         const sideMenuButton = document.getElementById('sideMenuButton');
         const closeSideMenu = document.getElementById('closeSideMenu');
@@ -262,7 +276,6 @@
             sideMenu.classList.add('translate-x-full');
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!sideMenu.contains(e.target) && !sideMenuButton.contains(e.target)) {
                 sideMenu.classList.add('translate-x-full');
@@ -271,41 +284,12 @@
     });
 </script>
 
-<style>
-    /* Smooth transitions */
-    .mobile-dropdown-content {
-        transition: all 0.3s ease-in-out;
-    }
-    
-    .mobile-dropdown-btn svg {
-        transition: transform 0.3s ease-in-out;
-    }
-
-    /* Side Menu Transition */
-    #sideMenu {
-        transition: transform 0.3s ease-in-out;
-    }
-
-    /* Optional: Add backdrop when menu is open */
-    .menu-backdrop {
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-</style>
-
-<!-- Hero Section -->
-
-
-<!-- Stats Section -->
 <section class="py-32 mb-24">
     <div class="container mx-auto px-4">
-        <!-- Yellow Stats Container -->
         <div class="bg-yellow-300 rounded-[40px] shadow-2xl p-16 relative overflow-hidden">
-            <!-- Border Overlay -->
-            <div class="absolute inset-0 border-4 border-black rounded-[40px] pointer-events-none"></div>
+            <div class="absolute inset-0 border-4 border-black rounded-[40px] "></div>
             
-            <!-- Stats Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <!-- Professional Members -->
                 <div class="text-center py-4">
                     <h3 class="text-7xl font-bold mb-4 flex items-center justify-center">
                         8
@@ -314,7 +298,6 @@
                     <p class="text-xl font-medium">Professional Members</p>
                 </div>
 
-                <!-- Years Experience -->
                 <div class="text-center py-4">
                     <h3 class="text-7xl font-bold mb-4 flex items-center justify-center">
                         0
@@ -323,7 +306,6 @@
                     <p class="text-xl font-medium">Years Experience</p>
                 </div>
 
-                <!-- Global Happy Customer -->
                 <div class="text-center py-4">
                     <h3 class="text-7xl font-bold mb-4 flex items-center justify-center">
                         0m
@@ -332,7 +314,6 @@
                     <p class="text-xl font-medium">Total Global Happy Customer</p>
                 </div>
 
-                <!-- Company Awards -->
                 <div class="text-center py-4">
                     <h3 class="text-7xl font-bold mb-4 flex items-center justify-center">
                         10
@@ -342,37 +323,15 @@
                 </div>
             </div>
 
-            <!-- Decorative Elements -->
             <div class="absolute -top-2 -right-2 w-8 h-8 bg-black rounded-full"></div>
             <div class="absolute -bottom-2 -left-2 w-8 h-8 bg-black rounded-full"></div>
         </div>
     </div>
 </section>
 
-<!-- Add these custom styles to your CSS -->
-<style>
-    /* Optional: Add custom shadow if needed */
-    .stats-container {
-        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
-    }
-</style>
 
-<style>
-    /* Optional: Add hover effects */
-    .group:hover span.opacity-20 {
-        transform: scale(2.5);
-        transition: transform 0.3s ease;
-    }
-    
-    /* Smooth transitions */
-    span.opacity-20 {
-        transition: transform 0.3s ease;
-    }
-</style>
 
-<!-- Services Section -->
 <section class="py-20 px-4 md:px-[10%] overflow-hidden">
-    <!-- Section Header -->
     <div class="relative mb-16">
         <h2 class="text-5xl md:text-6xl font-bold relative inline-block">
             Our Services
@@ -382,10 +341,8 @@
         </h2>
     </div>
 
-    <!-- Swiper Container -->
     <div class="swiper servicesSwiper">
         <div class="swiper-wrapper">
-            <!-- Digital Marketing Card -->
             <div class="swiper-slide">
                 <div class="group p-8 rounded-3xl border-2 border-black hover:bg-black hover:text-white transition-all duration-300">
                     <div class="mb-6">
@@ -406,7 +363,6 @@
                 </div>
             </div>
 
-            <!-- Media Outreach Card -->
             <div class="swiper-slide">
                 <div class="group p-8 rounded-3xl border-2 border-black hover:bg-black hover:text-white transition-all duration-300">
                     <div class="mb-6">
@@ -427,7 +383,6 @@
                 </div>
             </div>
 
-            <!-- 24/7 Support Card -->
             <div class="swiper-slide">
                 <div class="group p-8 rounded-3xl border-2 border-black hover:bg-black hover:text-white transition-all duration-300">
                     <div class="mb-6">
@@ -448,7 +403,6 @@
                 </div>
             </div>
 
-            <!-- UI/UX Design Card -->
             <div class="swiper-slide">
                 <div class="group p-8 rounded-3xl  border-2 border-black hover:bg-black hover:text-white transition-all duration-300">
                     <div class="mb-6">
@@ -509,19 +463,15 @@
             </div>
         </div>
 
-        <!-- Add Navigation -->
         <div class="swiper-button-next !text-black hover:!text-orange-500"></div>
         <div class="swiper-button-prev !text-black hover:!text-orange-500"></div>
         
-        <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
 </section>
 
-<!-- Add before closing body tag -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- Initialize Swiper -->
 <script>
     const servicesSwiper = new Swiper('.servicesSwiper', {
         slidesPerView: 1,
@@ -554,36 +504,9 @@
     });
 </script>
 
-<style>
-    /* Custom Swiper Styles */
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-        font-size: 24px !important;
-        font-weight: bold;
-    }
-
-    .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
-        background: #000;
-        opacity: 0.5;
-    }
-
-    .swiper-pagination-bullet-active {
-        opacity: 1;
-        background: #000;
-    }
-
-    .swiper-slide {
-        height: auto;
-    }
-</style>
-
-<!-- About Section -->
 <section class="py-20">
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap items-center">
-            <!-- Left Image Section -->
             <div class="w-full lg:w-1/2 relative">
                 <div class="relative rounded-[40px] overflow-hidden bg-yellow-300">
                     <img 
@@ -591,7 +514,6 @@
                         alt="Specialist" 
                         class="w-full h-full object-cover"
                     >
-                    <!-- Success Rate Badge -->
                     <div class="absolute bottom-8 right-8 bg-white rounded-2xl p-6 shadow-lg">
                         <div class="text-center">
                             <div class="text-5xl font-bold mb-1">97%</div>
@@ -601,14 +523,11 @@
                 </div>
             </div>
 
-            <!-- Right Content Section -->
             <div class="w-full lg:w-1/2 lg:pl-16 mt-12 lg:mt-0">
-                <!-- About Us Label -->
                 <div class="text-orange-500 font-medium mb-4">
                     ABOUT US
                 </div>
 
-                <!-- Main Heading -->
                 <h2 class="text-5xl font-bold leading-tight mb-8">
                     Specialists in Tech<br/>
                     Hurdles.
@@ -619,33 +538,26 @@
                     </span>
                 </h2>
 
-                <!-- Description -->
                 <p class="text-gray-600 text-lg mb-12">
                     Addressing complicated digital tech challenges with customized solutions to streamline processes and improve.
                 </p>
 
-                <!-- Feature Items -->
                 <div class="space-y-4">
-                    <!-- Item 1 -->
                     <div class="flex items-center p-6 border-2 border-black rounded-[20px] bg-white">
                         <span class="text-xl font-semibold mr-4">01.</span>
                         <span class="text-lg">Reporting with full Transparency.</span>
                     </div>
 
-                    <!-- Item 2 -->
                     <div class="flex items-center p-6 border-2 border-black rounded-[20px] bg-white">
                         <span class="text-xl font-semibold mr-4">02.</span>
                         <span class="text-lg">Graphs and Data Analysis.</span>
                     </div>
                 </div>
 
-                <!-- About Us Button -->
                 <div class="mt-12">
                     <a href="#" class="relative inline-flex items-center px-8 py-3 bg-white text-black font-medium rounded-full group overflow-hidden">
                         <span class="relative z-10">ABOUT US</span>
-                        <!-- Orange accent circle -->
                         <span class="absolute left-2 bottom-1 w-6 h-6 bg-orange-400 rounded-full opacity-20"></span>
-                        <!-- Border -->
                         <span class="absolute inset-0 border-2 border-black rounded-full"></span>
                     </a>
                 </div>
@@ -654,15 +566,12 @@
     </div>
 </section>
 
-<!-- Why Choose Us Section -->
 <section class="py-20 text-center">
     <div class="container mx-auto px-4">
-        <!-- Section Label -->
         <div class="text-orange-500 font-medium mb-4">
             WHY CHOOSE US
         </div>
 
-        <!-- Section Title with Bird Icon -->
         <div class="relative inline-block">
             <h2 class="text-7xl font-bold mb-6">
                 Complete SEO Solution
@@ -672,20 +581,16 @@
             </h2>
         </div>
 
-        <!-- Description -->
         <p class="text-gray-600 text-lg max-w-3xl mx-auto">
             Addressing complicated digital tech challenges with customized solutions to streamline processes and improve.
         </p>
     </div>
 </section>
 
-<!-- Service Cards Section -->
 <section class="py-12">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Card 1 - Keyword Optimization Plan -->
             <div class="h-[350px] p-10 border-2 border-black rounded-[2rem] hover:shadow-lg transition-shadow">
-                <!-- Icon -->
                 <div class="mb-8">
                     <div class="w-20 h-20 bg-purple-200 rounded-xl flex items-center justify-center">
                         <svg class="w-10 h-10 text-purple-600" viewBox="0 0 24 24" fill="currentColor">
@@ -693,15 +598,11 @@
                         </svg>
                     </div>
                 </div>
-                <!-- Title -->
                 <h3 class="text-3xl font-bold mb-6">Keyword Optimization Plan</h3>
-                <!-- Description -->
-                <p class="text-gray-600 text-lg leading-relaxed">Create a keyword strategy to  search visibility and improve targeted traffic to your website.</p>
+                <p class="text-gray-600 text-lg ">Create a keyword strategy to  search visibility and improve targeted traffic to your website.</p>
             </div>
 
-            <!-- Card 2 - Individualized SEO Strategy -->
             <div class="h-[350px] p-10 border-2 border-black rounded-[2rem] hover:shadow-lg transition-shadow">
-                <!-- Icon -->
                 <div class="mb-8">
                     <div class="w-20 h-20 bg-yellow-200 rounded-xl flex items-center justify-center">
                         <svg class="w-10 h-10 text-yellow-600" viewBox="0 0 24 24" fill="currentColor">
@@ -709,15 +610,11 @@
                         </svg>
                     </div>
                 </div>
-                <!-- Title -->
                 <h3 class="text-3xl font-bold mb-6">Individualized SEO Strategy</h3>
-                <!-- Description -->
                 <p class="text-gray-600 text-lg leading-relaxed">Tailor a personalized SEO  to meet your specific business needs and improve search rankings.</p>
             </div>
 
-            <!-- Card 3 - Extensive Site Assessment -->
             <div class="h-[350px] p-10 border-2 border-black rounded-[2rem] hover:shadow-lg transition-shadow">
-                <!-- Icon -->
                 <div class="mb-8">
                     <div class="w-20 h-20 bg-green-200 rounded-xl flex items-center justify-center">
                         <svg class="w-10 h-10 text-green-600" viewBox="0 0 24 24" fill="currentColor">
@@ -725,15 +622,11 @@
                         </svg>
                     </div>
                 </div>
-                <!-- Title -->
                 <h3 class="text-3xl font-bold mb-6">Extensive Site Assessment</h3>
-                <!-- Description -->
                 <p class="text-gray-600 text-lg leading-relaxed">Perform a detailed technical audit to optimize website functionality and search engine health.</p>
             </div>
 
-            <!-- Card 4 - Competitor Landscape Study -->
             <div class="h-[350px] p-10 border-2 border-black rounded-[2rem] hover:shadow-lg transition-shadow">
-                <!-- Icon -->
                 <div class="mb-8">
                     <div class="w-20 h-20 bg-orange-200 rounded-xl flex items-center justify-center">
                         <svg class="w-10 h-10 text-orange-600" viewBox="0 0 24 24" fill="currentColor">
@@ -741,30 +634,23 @@
                         </svg>
                     </div>
                 </div>
-                <!-- Title -->
                 <h3 class="text-3xl font-bold mb-6">Competitor Landscape Study</h3>
-                <!-- Description -->
                 <p class="text-gray-600 text-lg leading-relaxed">Evaluate industry competition to identify growth opportunities and enhance your competitive edge.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Projects Section -->
 <section class="py-12 sm:py-16 lg:py-20 text-white relative">
-    <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
         <img 
             src="https://hwp.creativegigstf.com/seom/assets/img/bg/bg-1.png" 
             alt="Background Pattern" 
             class="w-full h-full object-cover"
         >
-        <!-- Dark Overlay -->
     </div>
 
-    <!-- Content -->
     <div class="container mx-auto px-4 lg:px-8 relative z-10">
-        <!-- Section Header -->
         <div class="text-center mb-10 sm:mb-16">
             <span class="text-orange-500 mb-3 sm:mb-4 block text-sm sm:text-base">OUR PROJECTS</span>
             <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 relative inline-block">
@@ -778,9 +664,7 @@
             </p>
         </div>
 
-        <!-- Project Cards - Increased max-width -->
         <div class="space-y-4 sm:space-y-6 max-w-5xl lg:max-w-6xl mx-auto">
-            <!-- Card 1 -->
             <div class="group bg-orange-500 rounded-full p-6 sm:p-8 lg:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between hover:bg-orange-600 transition-all duration-300">
                 <div class="w-full sm:w-[85%]">
                     <div class="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-3">
@@ -798,7 +682,6 @@
                 </div>
             </div>
 
-            <!-- Card 2 -->
             <div class="group bg-purple-500 rounded-full p-6 sm:p-8 lg:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between hover:bg-purple-600 transition-all duration-300">
                 <div class="w-full sm:w-[85%]">
                     <div class="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-3">
@@ -816,7 +699,6 @@
                 </div>
             </div>
 
-            <!-- Card 3 -->
             <div class="group bg-lime-500 rounded-full p-6 sm:p-8 lg:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between hover:bg-lime-600 transition-all duration-300">
                 <div class="w-full sm:w-[85%]">
                     <div class="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-3">
@@ -834,16 +716,12 @@
                 </div>
             </div>
 
-            <!-- All Projects Button -->
             <div class="text-center mt-8 sm:mt-12">
                 <a href="#" class="group relative inline-block border border-white/20 text-white w-[80%] max-w-3xl py-3 sm:py-4 rounded-full hover:bg-white/10 transition-colors duration-300 text-sm sm:text-base overflow-hidden">
-                    <!-- Before Element (Left Side) -->
                     <span class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-[1px] bg-white/20 group-hover:w-16 transition-all duration-300"></span>
                     
-                    <!-- Text -->
                     <span class="relative z-10">ALL PROJECTS</span>
                     
-                    <!-- After Element (Right Side) -->
                     <span class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-[1px] bg-white/20 group-hover:w-16 transition-all duration-300"></span>
                 </a>
             </div>
@@ -851,12 +729,9 @@
     </div>
 </section>
 
-<!-- Clients Feedback Section -->
 <section class="py-20">
     <div class="container mx-auto px-4">
-        <!-- Header with Client Icons -->
         <div class="text-center mb-12">
-            <!-- Client Icons -->
             <div class="flex justify-center items-center gap-2 mb-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden">
                     <img src="https://hwp.creativegigstf.com/seom/assets/img/media/media-2.jpg" alt="Client" class="w-full h-full object-cover">
@@ -872,7 +747,6 @@
                 </div>
             </div>
 
-            <!-- Section Title -->
             <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 relative inline-block">
                 Clients' Feedback
                 <span class="absolute -right-8 -top-4">
@@ -885,19 +759,15 @@
                 Discover what our clients have to say about their experiences with us and learn how our services have positively impacted their businesses.
             </p>
 
-            <!-- View Details Button -->
             <button class="mt-8 px-8 py-3 border-2 border-black rounded-full hover:bg-black hover:text-white transition-colors duration-300">
                 VIEW DETAILS
             </button>
         </div>
 
-        <!-- Feedback Content -->
         <div class="flex gap-8">
-            <!-- Left Side Illustration -->
             <div class="hidden lg:block w-1/2">
                 <div class="relative">
                     <img src="https://hwp.creativegigstf.com/seom/assets/img/ilustration/ilus-1.png" alt="Feedback Illustration" class="w-full">
-                    <!-- Satisfaction Badge -->
                     <div class="absolute top-1/4 right-0 bg-white rounded-xl p-4 shadow-lg">
                         <div class="flex items-center gap-2">
                             <span class="font-bold">2k+ Satisfy client's</span>
@@ -909,10 +779,8 @@
                 </div>
             </div>
 
-            <!-- Right Side Testimonials Slider -->
             <div class="w-full lg:w-1/2">
                 <div class="space-y-6">
-                    <!-- Testimonial Card 1 -->
                     <div class="bg-white p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex items-center gap-3">
@@ -927,7 +795,6 @@
                         <p class="text-gray-600">Our consultancy, with limited marketing resources, hesitated to hire agencies offering generic service packages.</p>
                     </div>
 
-                    <!-- Testimonial Card 2 -->
                     <div class="bg-white p-6 rounded-2xl shadow-sm">
                         <div class="flex justify-between items-center mb-4">
                             <div class="flex items-center gap-3">
@@ -942,7 +809,6 @@
                         <p class="text-gray-600">"As a strategy consultancy managing multiple projects, we had limited resources for online marketing and were hesitant to partner with agencies offering generic packages."</p>
                     </div>
                     <div class="space-y-6">
-                        <!-- Testimonial Card 1 -->
                         <div class="bg-white p-6 rounded-2xl shadow-sm">
                             <div class="flex justify-between items-center mb-4">
                                 <div class="flex items-center gap-3">
@@ -976,34 +842,10 @@
     </div>
 </section>
 
-<!-- Add this script for the slider functionality -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize testimonial slider
-    let currentSlide = 0;
-    const testimonials = document.querySelectorAll('.testimonial-card');
-    
-    function showSlide(index) {
-        testimonials.forEach((slide, i) => {
-            slide.style.display = i === index ? 'block' : 'none';
-        });
-    }
 
-    // Auto-advance slides every 5 seconds
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % testimonials.length;
-        showSlide(currentSlide);
-    }, 5000);
 
-    // Show first slide initially
-    showSlide(0);
-});
-</script>
-
-<!-- Pricing Section -->
 <section class="py-20">
     <div class="container mx-auto px-4">
-        <!-- Section Header -->
         <div class="text-center mb-16">
             <span class="text-orange-500 font-medium mb-4 block">PRICING PLAN</span>
             <h2 class="text-5xl sm:text-6xl font-bold mb-6 relative inline-block">
@@ -1017,11 +859,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </p>
         </div>
 
-        <!-- Pricing Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <!-- Basic Plan -->
             <div class="relative bg-green-50 rounded-3xl p-8 border-2 border-black">
-                <!-- Corner Decoration -->
                 <div class="absolute top-0 right-0 w-20 h-20 bg-green-400 rounded-bl-full rounded-tr-3xl -m-0.5">
                     <svg class="absolute bottom-6 left-6 w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/>
@@ -1032,7 +871,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="text-6xl font-bold mb-4">$15</div>
                 <p class="text-gray-600 mb-8">Monthly Packages for Single Person</p>
                 
-                <!-- Features List -->
                 <ul class="space-y-4 mb-8">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1066,7 +904,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                 </ul>
 
-                <!-- Purchase Button -->
                 <button class="w-full py-4 bg-white border-2 border-black rounded-full font-bold hover:bg-black hover:text-white transition-colors duration-300 flex items-center justify-center group">
                     PURCHASE NOW
                     <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1075,9 +912,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
             </div>
 
-            <!-- Standard Plan -->
             <div class="relative bg-orange-50 rounded-3xl p-8 border-2 border-black">
-                <!-- Corner Decoration -->
                 <div class="absolute top-0 right-0 w-20 h-20 bg-orange-400 rounded-bl-full rounded-tr-3xl -m-0.5">
                     <svg class="absolute bottom-6 left-6 w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -1088,7 +923,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="text-6xl font-bold mb-4">$79</div>
                 <p class="text-gray-600 mb-8">Monthly Packages for Team</p>
                 
-                <!-- Features List -->
                 <ul class="space-y-4 mb-8">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1122,7 +956,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                 </ul>
 
-                <!-- Purchase Button -->
                 <button class="w-full py-4 bg-white border-2 border-black rounded-full font-bold hover:bg-black hover:text-white transition-colors duration-300 flex items-center justify-center group">
                     PURCHASE NOW
                     <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1131,9 +964,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
             </div>
 
-            <!-- Premium Plan -->
             <div class="relative bg-yellow-50 rounded-3xl p-8 border-2 border-black">
-                <!-- Corner Decoration -->
                 <div class="absolute top-0 right-0 w-20 h-20 bg-yellow-400 rounded-bl-full rounded-tr-3xl -m-0.5">
                     <svg class="absolute bottom-6 left-6 w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -1144,7 +975,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="text-6xl font-bold mb-4">$145</div>
                 <p class="text-gray-600 mb-8">Monthly Packages for Enterprise</p>
                 
-                <!-- Features List -->
                 <ul class="space-y-4 mb-8">
                     <li class="flex items-center">
                         <svg class="w-5 h-5 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1178,7 +1008,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </li>
                 </ul>
 
-                <!-- Purchase Button -->
                 <button class="w-full py-4 bg-white border-2 border-black rounded-full font-bold hover:bg-black hover:text-white transition-colors duration-300 flex items-center justify-center group">
                     PURCHASE NOW
                     <svg class="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1190,10 +1019,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
 
-<!-- Latest News Section -->
 <section class="py-20 bg-pink-50">
     <div class="container mx-auto px-4">
-        <!-- Section Header -->
         <div class="text-center mb-16">
             <span class="text-orange-500 font-medium mb-4 block">BLOGS</span>
             <h2 class="text-5xl sm:text-6xl font-bold mb-6 relative inline-block">
@@ -1207,11 +1034,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </p>
         </div>
 
-        <!-- Blog Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <!-- Blog Card 1 -->
             <div class="group">
-                <!-- Image Container -->
                 <div class="rounded-3xl overflow-hidden mb-6">
                     <img 
                         src="https://hwp.creativegigstf.com/seom/assets/img/blog/blog-1.jpg" 
@@ -1219,7 +1043,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         class="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-300"
                     >
                 </div>
-                <!-- Content -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-4 text-gray-500">
                         <span>Jain Smith</span>
@@ -1231,7 +1054,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="text-gray-600">
                         Strengthen your marketing plan by performing a detailed social media audit to identify opportunities and optimize performance effectively.
                     </p>
-                    <!-- Read More Button -->
                     <button class="flex items-center gap-2 font-bold group">
                         READ MORE
                         <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1241,9 +1063,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
 
-            <!-- Blog Card 2 -->
             <div class="group">
-                <!-- Image Container -->
                 <div class="rounded-3xl overflow-hidden mb-6">
                     <img 
                         src="https://hwp.creativegigstf.com/seom/assets/img/blog/blog-2.jpg" 
@@ -1251,7 +1071,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         class="w-full h-[300px] object-cover transform group-hover:scale-105 transition-transform duration-300"
                     >
                 </div>
-                <!-- Content -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-4 text-gray-500">
                         <span>Jain Smith</span>
@@ -1263,7 +1082,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="text-gray-600">
                         Strengthen your marketing plan by performing a detailed social media audit to identify opportunities and optimize performance effectively.
                     </p>
-                    <!-- Read More Button -->
                     <button class="flex items-center gap-2 font-bold group">
                         READ MORE
                         <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1276,7 +1094,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
 
-<!-- Newsletter Section -->
 <section class="py-8">
     <div class="container mx-auto px-4">
         <div class="bg-purple-400 rounded-[2rem] p-8 flex flex-col sm:flex-row items-center justify-between shadow-lg border-2 border-black">
@@ -1295,13 +1112,10 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </section>
 
-<!-- Footer Section -->
 <footer class="py-16  border-t px-[15%]">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <!-- Company Info -->
             <div class="col-span-1">
-                <!-- Logo -->
                 <div class="flex items-center gap-2 mb-6">
                     <div class="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
                         SE
@@ -1311,13 +1125,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="text-gray-600 mb-6">
                     A reputable SEO agency begins with a analysis comprehensive analysis.
                 </p>
-                <!-- Star Decoration -->
                 <svg class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
             </div>
 
-            <!-- Company Links -->
             <div>
                 <h3 class="text-xl font-bold mb-6">Company</h3>
                 <ul class="space-y-4">
@@ -1329,7 +1141,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </ul>
             </div>
 
-            <!-- Contact Info -->
             <div>
                 <h3 class="text-xl font-bold mb-6">Contact Us</h3>
                 <ul class="space-y-4">
@@ -1339,7 +1150,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </ul>
             </div>
 
-            <!-- Video Section -->
             <div>
                 <h3 class="text-xl font-bold mb-6">Our Video</h3>
                 <div class="rounded-2xl overflow-hidden relative group">
@@ -1348,7 +1158,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         alt="Video Thumbnail" 
                         class="w-full h-48 object-cover"
                     >
-                    <button class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                    <button class="absolute  flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
                         <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M8 5v14l11-7z"/>
@@ -1359,12 +1169,10 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
 
-        <!-- Footer Bottom -->
         <div class="mt-16 pt-8 border-t">
             <div class="flex flex-col sm:flex-row justify-between items-center mb-4">
                 <p class="text-gray-600 mb-4 sm:mb-0">© POWERED BY SEOM</p>
                 
-                <!-- Social Links -->
                 <div class="flex gap-4">
                     <a href="#" class="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center hover:bg-black hover:text-white transition-colors">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1388,14 +1196,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
 
-                <!-- Terms Links -->
                 <div class="flex gap-6 mt-4 sm:mt-0">
                     <a href="#" class="text-gray-600 hover:text-black">Terms & conditions</a>
                     <a href="#" class="text-gray-600 hover:text-black">Privacy policy</a>
                 </div>
             </div>
 
-            <!-- Credit Line -->
             <div class="text-center pt-4 border-t">
                 <p class="text-gray-500">Made with ❤️ by 
                     <a href="#" class="font-medium text-orange-500 hover:text-orange-600 transition-colors">
@@ -1406,6 +1212,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </footer>
+
 
 </body>
 </html>
